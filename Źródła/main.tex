@@ -1,0 +1,160 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage{polski}
+\usetheme[lang=pl,hr=true]{NewPwr}
+
+
+\author{Wiktor Wołkowski (290298)}
+\title{Analiza Danych Empirycznych}
+\subtitle{Ocena Wydajności Modeli Klasyfikacji}
+\institute{Politechnika Wrocławska}
+\date{15.12.2025}
+
+\begin{document}
+\begin{frame}
+ \maketitle
+\end{frame}
+
+
+\begin{frame}
+ \frametitle{Zaliczenie zadania}
+ \begin{itemize}
+     
+ \item Repozytorium: https://github.com/Wilk1717/zadanie3.git
+ \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+ \frametitle{Plan prezentacji}
+ \tableofcontents
+\end{frame}
+
+\section{Charakterystyka porównywanych algorytmów}
+\begin{frame}
+ \frametitle{Charakterystyka porównywanych algorytmów}
+ \begin{columns}
+  
+  \begin{column}{0.48\textwidth}
+   {Regresja Logistyczna}
+    \begin{itemize}
+     \item Reprezentant prostych modeli liniowych[cite: 61].
+     \item \textbf{Zaleta:} Łatwa interpretowalność zależności[cite: 62].
+     \item \textbf{Ograniczenie:} Zakłada liniową relację między cechami a wynikiem, co może być niewystarczające[cite: 62].
+    \end{itemize}
+   
+  \end{column}
+  
+  
+  \begin{column}{0.48\textwidth}
+   {Las Losowy (Random Forest)}
+    \begin{itemize}
+     \item Algorytm zespołowy oparty na wielu drzewach decyzyjnych[cite: 65].
+     \item Modeluje złożone, nieliniowe granice decyzyjne[cite: 66].
+     \item Lepiej radzi sobie ze specyfiką danych finansowych[cite: 66].
+    \end{itemize}
+  
+  \end{column}
+ \end{columns}
+\end{frame}
+
+
+\section{Implikacje praktyczne wdrożenia}
+\begin{frame}
+ \frametitle{Implikacje praktyczne wdrożenia}
+ \textit{Wdrożenie modelu Lasu Losowego niesie za sobą konkretne korzyści biznesowe:}
+ \vspace{0.5cm}
+ \begin{itemize}
+  \item \textbf{Automatyzacja procesów:}
+  Zastąpienie manualnej weryfikacji automatyczną walidacją transakcji[cite: 95].
+  \item \textbf{Redukcja błędów:}
+  Wysoka precyzja modelu minimalizuje ryzyko błędnych decyzji (np. odrzucenia poprawnej transakcji)[cite: 95].
+  \item \textbf{Efektywność kosztowa:}
+  Ograniczenie strat finansowych wynikających z fraudów oraz zmniejszenie nakładu pracy ludzkiej[cite: 95].
+ \end{itemize}
+\end{frame}
+
+
+
+\section{Dane i Metodologia}
+
+\begin{frame}
+ \frametitle{Charakterystyka zbioru danych}
+ % Na podstawie sekcji 1.2 [cite: 21-31]
+ \begin{itemize}
+  \item \textbf{Zbiór:} Syntetyczne dane finansowe (1000 rekordów).
+  \item \textbf{Cel:} Wykrywanie oszustw (klasyfikacja binarna).
+  \item \textbf{Kluczowe atrybuty:}
+  \begin{itemize}
+   \item Czas i kwota transakcji.
+   \item Typ klienta (detaliczny/korporacyjny).
+   \item Zmienna docelowa (0 - fraud, 1 - legalna).
+  \end{itemize}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Przetwarzanie danych}
+ 
+ \begin{enumerate}
+  \item \textbf{Czyszczenie:} Imputacja braków średnią arytmetyczną.
+  \item \textbf{Normalizacja:} Skalowanie Min-Max do przedziału $[0, 1]$.
+  \item \textbf{Inżynieria cech:} Kodowanie One-Hot dla zmiennych kategorycznych.
+  \item \textbf{Podział zbioru:}
+  \begin{itemize}
+   \item Treningowy: 70\%
+   \item Walidacyjny: 15\%
+   \item Testowy: 15\%
+  \end{itemize}
+ \end{enumerate}
+\end{frame}
+
+\section{Wyniki}
+
+\begin{frame}
+ \frametitle{Porównanie modeli}
+
+ \begin{table}
+ \centering
+ \begin{tabular}{|l|c|c|}
+ \hline
+ \textbf{Algorytm} & \textbf{Dokładność} & \textbf{F1-Score} \\ \hline
+ Regresja Logistyczna & 89.5\% & 0.88 \\ \hline
+ \textbf{Las Losowy} & \textbf{94.2\%} & \textbf{0.95} \\ \hline
+ \end{tabular}
+ \caption{Wyniki na zbiorze testowym}
+ \end{table}
+\end{frame}
+
+
+\section{Podsumowanie}
+
+\begin{frame}
+ \frametitle{Wnioski końcowe}
+
+ \begin{itemize}
+  \item \textbf{Las Losowy} okazał się skuteczniejszy niż Regresja Logistyczna.
+  \item Modele liniowe nie radzą sobie w pełni ze złożonymi relacjami w danych finansowych.
+  \item Wysoki F1-Score (0.95) potwierdza stabilność wybranego rozwiązania.
+  \item Implementacja modelu może zredukować potrzebę manualnej weryfikacji transakcji.
+ \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+ \frametitle{Wykorzystane materiały}
+ 
+ \begin{thebibliography}{9}
+ \bibitem{doe2023}
+ John Doe, \emph{Sztuczna Inteligencja: Podstawy i Zastosowania}, Tech Press, 2023.
+ \bibitem{smith2022}
+ Alice Smith, \emph{Znaczenie liniowej regresji w uczeniu maszynowym}, Journal of Computational Science, 2022.
+ \end{thebibliography}
+\end{frame}
+
+
+\begin{frame}
+  \centering
+  \Large Dziękuję za uwagę.
+\end{frame}
+
+\end{document}
